@@ -5,3 +5,4 @@ class User < ApplicationRecord
   }
   has_many :tags, class_name: "Tag", foreign_key: "id"
 end
+#confirmar o has many
