@@ -1,8 +1,5 @@
 class User < ApplicationRecord
-  enum sex: {
-    male:"Male",
-    female:"Female"
-  }
-  has_many :tags, class_name: "Tag", foreign_key: "id"
+  has_and_belongs_to_many :tags
+  has_many :segment_users
+  has_many :segments, through: :segment_users
 end
-#confirmar o has many
