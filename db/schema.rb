@@ -10,22 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_18_205858) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_001518) do
+  create_table "segment_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tags", force: :cascade do |t|
-    t.text "name"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "first_name"
-    t.text "last_name"
-    t.text "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
     t.date "birth_date"
     t.date "admission_date"
     t.boolean "is_active"
-    t.text "sex"
+    t.string "sex"
     t.datetime "last_sign_in_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
