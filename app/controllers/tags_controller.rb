@@ -1,6 +1,5 @@
 class TagsController < ApplicationController
-      skip_before_action :verify_authenticity_token
-  
+  skip_before_action :verify_authenticity_token
     def index
         @tags = Tag.all
         render json: @tags
@@ -11,7 +10,7 @@ class TagsController < ApplicationController
       render json: @tag
     end
   
-    def update
+    def updateusers Copy
       @tag = Tag.find(params[:id])
     end
   
@@ -27,7 +26,7 @@ class TagsController < ApplicationController
     end
 
     private
-    
+
     def tag_params
       params.require(:tag).permit(:name)
     end

@@ -1,3 +1,4 @@
 class SegmentUser < ApplicationRecord
-  belongs_to :segment
-ends
+  belongs_to :user
+  belongs_to :Segment
+end
