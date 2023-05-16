@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_190918) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_16_195651) do
   create_table "segments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -21,6 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_190918) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "users_id"
+    t.index ["users_id"], name: "index_tags_on_users_id"
   end
 
   create_table "user_segments", force: :cascade do |t|
@@ -45,9 +47,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_190918) do
     t.datetime "last_sign_in_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tags_id"
+    t.index ["tags_id"], name: "index_users_on_tags_id"
   end
 
+  add_foreign_key "tags", "users", column: "users_id"
   add_foreign_key "user_segments", "segments"
   add_foreign_key "user_segments", "segments", column: "segments_id"
   add_foreign_key "user_segments", "users"
+  add_foreign_key "users", "tags", column: "tags_id"
 end
