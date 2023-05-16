@@ -1,0 +1,2 @@
+module UserSegmentsHelper
+end
