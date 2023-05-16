@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root "welcome#index"
   resources :users, defaults: { format: :json }
   resources :tags, defaults: {format: :json}
+  resources :segments, defaults: {format: :json}
 end

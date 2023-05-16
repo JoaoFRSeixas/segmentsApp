@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_12_184929) do
-  create_table "segment_users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_05_16_190918) do
   create_table "segments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -26,6 +21,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_184929) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_segments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "segments_id", null: false
+    t.integer "segment_id", null: false
+    t.index ["segment_id"], name: "index_user_segments_on_segment_id"
+    t.index ["segments_id"], name: "index_user_segments_on_segments_id"
+    t.index ["user_id"], name: "index_user_segments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_184929) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "user_segments", "segments"
+  add_foreign_key "user_segments", "segments", column: "segments_id"
+  add_foreign_key "user_segments", "users"
 end
